@@ -1,6 +1,5 @@
 <?php
 
-
 /*    const PUBLIC_PATH =  __DIR__;
     const APP_PATH = PUBLIC_PATH . '/..';
     const VENDOR_PATH = PUBLIC_PATH . '/../vendor';*/
@@ -9,7 +8,6 @@
 
 $dotenv = Dotenv\Dotenv::createImmutable(APP_PATH);
 $dotenv->load();*/
-
 
 $host = env('DB_HOST');
 $db_name = env('DB_DATABASE');
@@ -24,9 +22,8 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
-
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    echo 'Erreur de connexion : ' . $e->getMessage();
+    echo 'Erreur de connexion : '.$e->getMessage();
 }
