@@ -1,4 +1,4 @@
-<?php include VIEWS_PATH.'/partials/head.php' ?>
+<?php view('partials.head', compact('title')); ?>
 <main class="page-main">
     <h1><?= $title ?></h1>
     <?php if (count($students) > 0) { ?>
@@ -17,7 +17,7 @@
 </main>
 
 
-<?php include VIEWS_PATH.'/partials/nav.php' ?>
+<?php view('partials.nav') ?>
 
 
-<?php include VIEWS_PATH.'/partials/footer.php' ?>
+<?php view('partials.footer') ?>
