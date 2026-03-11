@@ -1,6 +1,8 @@
 <?php
+
+
 require __DIR__ . '/../bootstrap/app.php';
-require VENDOR_PATH.'/autoload.php';
+require VENDOR_PATH . '/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(ROOT_PATH);
 $dotenv->load();
@@ -8,18 +10,24 @@ $dotenv->load();
 switch ($_SERVER['REQUEST_URI']) {
     case '':
     case '/':
-        require CONTROLLERS_PATH . '/HomeController.php';
-        index();
+        Attendances\Controllers\HomeController::index();
+
+        /*
+        Appel de la méthode index via une instance
+        Ne marche que si la méthode n'est pas déclarée statique
+         $controller = new HomeController();
+         $controller->index();
+        */
         break;
     case '/presences':
-       require CONTROLLERS_PATH . '/AttendanceController.php';
-       index();
+
+        Attendances\Controllers\AttendanceController::index();
         break;
     case '/etudiants':
-        require CONTROLLERS_PATH . '/StudentController.php';
-           index();
+
+        Attendances\Controllers\StudentController::index();
         break;
     default:
         $title = '404';
-        include VIEWS_PATH.'/404.php';
+        include VIEWS_PATH . '/404.php';
 }
